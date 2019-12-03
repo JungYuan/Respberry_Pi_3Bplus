@@ -14,3 +14,7 @@
 
 
 <p>Refence : http://han-ya.blogspot.com/2018/08/raspberry-pi-3b-1.html</p>
+
+<h3>Install 中文注音輸入法</h3>
+   - sudo apt-get install scim-chewing
+   - sudo apt-get install ttf-wqy-microhei ttf-wqy-zenhei xfonts-wqy
