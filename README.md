@@ -23,7 +23,7 @@
 <h3> hassio homepage</h3>
     <p>- https://www.home-assistant.io</p>
     <p>- download image file form https://www.home-assistant.io/hassio/installation/</p>
-    - write image file to microSD by <b>BalenaEtcher</b>
+    - write image file to microSD by <b><a href="https://www.balena.io/etcher/">BalenaEtcher</a></b>
     
 <h3> setup WiFi</h3>
     <p>- insert image microSD card into windows PC, creat folder/file: CONFIG/network/my-network 
