@@ -53,6 +53,7 @@ method=auto<br>
 addr-gen-mode=stable-privacy<br>
 method=auto<br>
 <br>
+<h3> Hassio in Raspberry Pi setup and addon install</h3>
     <p>- install addon in Hassio UI</p>
-    <p> -- configurator, Samba share, SSH server, .....</p>
+    <p>*** configurator, Samba share, SSH server, .....</p>
          
