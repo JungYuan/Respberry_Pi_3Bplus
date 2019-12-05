@@ -61,4 +61,5 @@ method=auto<br>
     <p><b>ssh-keygen -t rsa -b 4096 -C "InnovationCS"</b></p>
     <p>產生完金鑰後，到 C:\Users\你的電腦名稱.ssh 下找到公鑰: id_rsa.pub，複製到 Home Assistant 的設定裡。</p>
     <p>把整串包含 "ssh-rsa IFJOSDFNSO.....==你的註解" 複製到 "authorized_keys": ["這裡"]，使用""包起來。</p>
+    <p>reference :https://ithelp.ithome.com.tw/articles/10219700</p>
          
