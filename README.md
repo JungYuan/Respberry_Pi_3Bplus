@@ -28,7 +28,7 @@
 <h3> setup WiFi</h3>
     <p>- insert image microSD card into windows PC, creat folder/file: CONFIG/network/my-network 
   in driver/disk "hassio-boot"</p>
-    <p> type following contents into my-network file</>
+    <p>- type following contents into my-network file</p>
     <br>
 [connection]<br>
 id=my-network<br>
@@ -53,4 +53,6 @@ method=auto<br>
 addr-gen-mode=stable-privacy<br>
 method=auto<br>
 <br>
-
+    <p>- install addon in Hassio UI</p>
+    <p> -- configurator, Samba share, SSH server, .....</p>
+         
