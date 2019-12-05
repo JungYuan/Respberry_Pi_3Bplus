@@ -18,3 +18,11 @@
 <h3>Install 中文注音輸入法</h3>
    - sudo apt-get install scim-chewing
    - sudo apt-get install ttf-wqy-microhei ttf-wqy-zenhei xfonts-wqy
+===========================================================================================================================
+<h1> Install Home assistor (Hassio)</h1>
+<h3> hassio homepage</h3>
+    - https://www.home-assistant.io
+    - download image file form https://www.home-assistant.io/hassio/installation/
+    - write image file to microSD by <b>BalenaEtcher</b>
+    
+<h3> 
