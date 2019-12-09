@@ -65,6 +65,7 @@ method=auto<br>
     <p>DuckDNS addon install https://ithelp.ithome.com.tw/articles/10220194</p>
     <p><br><b>issue 2. access Samba share</b></p>
         <p>windows10: need to enable "SMB 1.0/CIFS File Sharing Support "--> "SMB 1.0/CIFS client"</p>
+        <p>cmd --> optionalfeatures</p>
         
     
          
