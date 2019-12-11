@@ -32,7 +32,7 @@
     <br>
 [connection]<br>
 id=my-network<br>
-uuid=72111c67-4a5d-4d5c-925e-f8ee26efb3c3<br>
+<a href="https://www.uuidgenerator.net/">uuid</a>=72111c67-4a5d-4d5c-925e-f8ee26efb3c3<br>
 type=802-11-wireless<br>
 <br>
 [802-11-wireless]<br>
