@@ -5,6 +5,10 @@
 <h3>Setup VNC and SSH for remote connect</h3>
   <p>- VNC serve already installed in Raspbian, only do the </p>
   <p>- $sudo raspi-config (to enable vnc & ssh from interfave setup)</p>
+  
+<h3>Enable Serial console</h3>
+  <p>- editing /boot/config.txt </p>
+  <p>- add enable_uart=1 on it's own line</p>
  
 <h3>Problem : HDMI no sound</h3>
   <p>- need edit /boot/config.txt add new line than reboot</p>
