@@ -3,6 +3,7 @@
   - follow instructure https://www.raspberrypi.org/documentation/installation/installing-images/README.md<br>
   
 <h3>use SSH connect without monitor/keyboard</h3>
+  <p>- new raspberry Pi OS installer to use ctrl-shift-x for config wifi and ssh.</p>
   <p>- create a file name 'ssh'(no contect) in boot folder </p>
   <p>- create a file name 'wpa_supplicant.conf'</p>
   <p>country=US<br>
@@ -13,7 +14,7 @@
       scan_ssid=1<br>
       ssid="your_wifi_ssid"<br>
       psk="your_wifi_password"<br>
-      }<br><\p>
+      }<br></p>
   <p>- use Putty to connect raspberrypi.local:22</p>
   
 <h3>Setup VNC and SSH for remote connect</h3>
