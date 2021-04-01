@@ -2,6 +2,19 @@
   - Download img file from offical web https://www.raspberrypi.org/downloads/<br>
   - follow instructure https://www.raspberrypi.org/documentation/installation/installing-images/README.md<br>
   
+<h3>use SSH connect without monitor/keyboard</h3>
+  <p>- create a file name 'ssh'(no contect) in boot folder </p>
+  <p>- create a file name 'wpa_supplicant.conf'</p>
+  <p>country=US<br>
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev<br>
+update_config=1<br>
+<br>
+network={<br>
+scan_ssid=1<br>
+ssid="your_wifi_ssid"<br>
+psk="your_wifi_password"<br>
+}<br><\p>
+  
 <h3>Setup VNC and SSH for remote connect</h3>
   <p>- VNC serve already installed in Raspbian, only do the </p>
   <p>- $sudo raspi-config (to enable vnc & ssh from interfave setup)</p>
