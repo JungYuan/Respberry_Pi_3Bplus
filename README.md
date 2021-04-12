@@ -6,15 +6,18 @@
   <p>- new raspberry Pi OS installer to use ctrl-shift-x for config wifi and ssh.</p>
   <p>- create a file name 'ssh'(no contect) in boot folder </p>
   <p>- create a file name 'wpa_supplicant.conf'</p>
-  <p>country=US<br>
-      ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev<br>
-      update_config=1<br>
-      <br>
-      network={<br>
-      scan_ssid=1<br>
-      ssid="your_wifi_ssid"<br>
-      psk="your_wifi_password"<br>
-      }<br></p>
+  <pre>
+      country=US
+      ctrl_interface=DIR=/var/run/wpa_supplicant 
+      GROUP=netdev
+      update_config=1
+      
+      network={
+        scan_ssid=1
+        ssid="your_wifi_ssid"
+        psk="your_wifi_password"
+      }
+   </pre>
   <p>- use Putty to connect raspberrypi.local:22</p>
   
 <h3>Setup VNC and SSH for remote connect</h3>
