@@ -88,5 +88,25 @@ method=auto<br>
         <p>windows10: need to enable "SMB 1.0/CIFS File Sharing Support "--> "SMB 1.0/CIFS client"</p>
         <p>cmd --> optionalfeatures</p>
         
-    
-         
+<h3> Node-RED install in Rasbin</h3>
+<ol>
+  <li> <a href="https://nodered.org/docs/getting-started/raspberrypi">installation introduction in NodeRED.org</a></li>
+  <li> setup authentication</li>
+  <ul>
+    <li>sudo npm install -g node-red-admin #generate password HASH code</li>
+    <li>node-red-admin hash-pw. #copy generated code</li>
+    <li>cd .node-red</li>
+    <li>vi settings.js</li>
+    <li>edit following datas to enable user authentication</li>
+      <pre>
+      adminAuth: {
+          type: "credentials",
+          users: [{
+              username: "admin",
+              password: "GENERATED HASH-PW CODE",
+              permissions: "*"
+          }]
+      },
+      </pre>
+  </ul>
+</ol>
