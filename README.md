@@ -110,3 +110,30 @@ method=auto<br>
       </pre>
   </ul>
 </ol>
+
+<h3>Setup DDNS - Dynu.org</h3>
+<ol>
+  <li>register Dynu.org account</li>
+  <li>update ip address => https://api.dynu.com/nic/update?hostname=example.dynu.com&password=PASSWORD</li>
+  <li> Method 2 </li>
+  <ul>
+    <li>Create a directory to put the files into</li>
+    <pre>
+    mkdir dynudns 
+    cd dynudns
+    vi dynu.sh ==>
+
+    echo url="https://api.dynu.com/nic/update?username=USERNAME&password=PASSWORD" | curl -k -o ~/dynudns/dynu.log -K -
+    
+    *password can be used MD5 Hash
+    <==
+    chmod 700 dynu.sh
+    crontab -e ==>
+    
+    */5 * * * * ~/dynudns/dynu.sh >/dev/null 2>&1
+    
+    <== update ip every 5 min
+    </pre>
+  </ul>
+</ol>
+    
