@@ -61,7 +61,7 @@
       gateway <home gateway>
       netmask <home netmask>
     </pre>
-
+</ol>
 <h3>Setup VNC and SSH for remote connect</h3>
   <p>- VNC serve already installed in Raspbian, only do the </p>
   <p>- $sudo raspi-config (to enable vnc & ssh from interfave setup)</p>
