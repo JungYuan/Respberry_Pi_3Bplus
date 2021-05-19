@@ -18,7 +18,50 @@
       }
    </pre>
   <p>- use Putty to connect raspberrypi.local:22</p>
-  
+  <hr>
+  <p>- setup multiple WiFi</p>
+  <ol>
+    <li>Edit /etc/wpa_supplicant/wpa_supplicant.conf and add id_str="school" under the schools wpa info and id_str="home" under your homes wpa info. 
+        Your file    should now look similar to this:</li>
+    <pre>
+        ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+        update_config=1
+
+        network={
+            ssid="SCHOOLS NETWORK NAME"
+            psk="SCHOOLS PASSWORD"
+            id_str="school"
+        }
+
+        network={
+            ssid="HOME NETWORK NAME"
+            psk="HOME PASSWORD"
+            id_str="home"
+        }
+    </pre>
+    <li>Then set up /etc/network/interfaces with iface school inet static and iface home inet static in it so it looks like the following:
+        This applies to Raspbian Wheezy prior to 2015-05-05 for later (and Jessie) See How do I set up networking/WiFi/Static IP</li>
+    <pre>
+      auto lo
+
+      iface lo inet loopback
+      iface eth0 inet dhcp
+
+      allow-hotplug wlan0
+      iface wlan0 inet manual
+      wpa-roam /etc/wpa_supplicant/wpa_supplicant.conf
+
+      iface school inet static
+      address <school address>
+      gateway <school gateway>
+      netmask <school netmask>
+
+      iface home inet static
+      address <home address>
+      gateway <home gateway>
+      netmask <home netmask>
+    </pre>
+</ol>
 <h3>Setup VNC and SSH for remote connect</h3>
   <p>- VNC serve already installed in Raspbian, only do the </p>
   <p>- $sudo raspi-config (to enable vnc & ssh from interfave setup)</p>
