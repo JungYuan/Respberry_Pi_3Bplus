@@ -197,4 +197,15 @@ method=auto<br>
       <span>https://api.dynu.com/nic/update?hostname=&lt;your ddns hostname&gt;&password=&lt;Password MD5/SHA-256&gt;</span>
     </li>
 </ol>
+
+<h3>Install Docker</h3>
+<ol>
+  <li>first, update and full-upgrade</li>
+  <li>install docker command<br>curl -sSL https://get.docker.com | sh</li>
+  <li>sudo systemctl enable docker</li>
+  <li>Install portainer for docker container manager<br>
+      https://documentation.portainer.io/v2.0/deploy/ceinstalldocker/</li>
+  <li>reboot</li>
+  <li>https://host.local:9000</li>
+</ol>
     
