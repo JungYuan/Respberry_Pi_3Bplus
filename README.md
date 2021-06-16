@@ -195,7 +195,7 @@ method=auto<br>
   </ul>
     <li>
     <pre>
-      https://api.dynu.com/nic/update?hostname=/<your ddns hostname/>&password=<Password MD5/SHA-256>
+      https://api.dynu.com/nic/update?hostname=&gt;your ddns hostname&lt;&password=<Password MD5/SHA-256>
     </pre></li>
 </ol>
     
