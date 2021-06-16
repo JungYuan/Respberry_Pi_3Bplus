@@ -198,6 +198,13 @@ method=auto<br>
     </li>
 </ol>
 
+<h3>Install Mosquitto MQTT broker</h3>
+<ol>
+  <li>first, update and upgrade</li>
+  <li>sudo apt-get install mosquitto mosquitto-clients</li>
+  <li>reference:https://blog.gtwang.org/iot/raspberry-pi/raspberry-pi-mosquitto-mqtt-broker-iot-integration/</li>
+</ol>
+
 <h3>Install Docker</h3>
 <ol>
   <li>first, update and full-upgrade</li>
