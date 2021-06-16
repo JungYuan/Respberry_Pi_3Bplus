@@ -203,9 +203,11 @@ method=auto<br>
   <li>first, update and full-upgrade</li>
   <li>install docker command<br>curl -sSL https://get.docker.com | sh</li>
   <li>sudo systemctl enable docker</li>
-  <li>Install portainer for docker container manager<br>
+  <li>Install portainer for docker container/Image manager<br>
       https://documentation.portainer.io/v2.0/deploy/ceinstalldocker/</li>
   <li>reboot</li>
   <li>https://host.local:9000</li>
+  <li>register hub.docker.com</li> 
+  <li>Install homebridge Image</li>
 </ol>
     
