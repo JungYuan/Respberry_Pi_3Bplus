@@ -193,6 +193,8 @@ method=auto<br>
     <== update ip every 5 min
     </pre>
   </ul>
-    <li>https://api.dynu.com/nic/update?hostname=<your ddns hostname>&password=<Password MD5/SHA-256></li>
+    <li>
+    <pre>https://api.dynu.com/nic/update?hostname=<your ddns hostname>&password=<Password MD5/SHA-256>
+    </pre></li>
 </ol>
     
