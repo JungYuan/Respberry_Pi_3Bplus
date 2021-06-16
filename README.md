@@ -171,7 +171,7 @@ method=auto<br>
 
 <h3>Setup DDNS - Dynu.org</h3>
 <ol>
-  <li>register Dynu.org account</li>
+  <li>register Dynu.com account</li>
   <li>update ip address => https://api.dynu.com/nic/update?hostname=example.dynu.com&password=PASSWORD</li>
   <li> Method 2 </li>
   <ul>
@@ -192,6 +192,7 @@ method=auto<br>
     
     <== update ip every 5 min
     </pre>
+    <li>https://api.dynu.com/nic/update?hostname=<your ddns hostname>&password=<Password MD5/SHA-256></li>
   </ul>
 </ol>
     
