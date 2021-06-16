@@ -209,5 +209,6 @@ method=auto<br>
   <li>https://host.local:9000</li>
   <li>register hub.docker.com</li> 
   <li>Install homebridge Image</li>
+  <li>Install homebridge Plugin "Homebridge Mqttthing"</li>
 </ol>
     
