@@ -39,29 +39,9 @@
             id_str="home"
         }
    
-    Then set up /etc/network/interfaces with iface school inet static and iface home inet static in it so it looks like the following:
-        This applies to Raspbian Wheezy prior to 2015-05-05 for later (and Jessie) See How do I set up networking/WiFi/Static IP
-    <pre>
-      auto lo
-
-      iface lo inet loopback
-      iface eth0 inet dhcp
-
-      allow-hotplug wlan0
-      iface wlan0 inet manual
-      wpa-roam /etc/wpa_supplicant/wpa_supplicant.conf
-
-      iface school inet static
-      address <school address>
-      gateway <school gateway>
-      netmask <school netmask>
-
-      iface home inet static
-      address <home address>
-      gateway <home gateway>
-      netmask <home netmask>
     </pre>
 </ol>
+
 <h3>Setup VNC and SSH for remote connect</h3>
   <p>- VNC serve already installed in Raspbian, only do the </p>
   <p>- $sudo raspi-config (to enable vnc & ssh from interfave setup)</p>
@@ -83,6 +63,7 @@
    <p>- sudo apt-get install scim-chewing</p>
    <p>- sudo apt-get install ttf-wqy-microhei ttf-wqy-zenhei xfonts-wqy</>
 ============================================================================
+  
 <h1> Node-RED install in Rasbin</h1>
 <ol>
   <li> <a href="https://nodered.org/docs/getting-started/raspberrypi">installation introduction in NodeRED.org</a></li>
