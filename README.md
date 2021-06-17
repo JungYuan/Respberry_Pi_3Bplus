@@ -83,6 +83,96 @@
    <p>- sudo apt-get install scim-chewing</p>
    <p>- sudo apt-get install ttf-wqy-microhei ttf-wqy-zenhei xfonts-wqy</>
 ============================================================================
+<h1> Node-RED install in Rasbin</h1>
+<ol>
+  <li> <a href="https://nodered.org/docs/getting-started/raspberrypi">installation introduction in NodeRED.org</a></li>
+  <li> setup authentication</li>
+  <ul>
+    <li>sudo npm install -g node-red-admin #generate password HASH code</li>
+    <li>node-red-admin hash-pw. #copy generated code</li>
+    <li>cd .node-red</li>
+    <li>vi settings.js</li>
+    <li>edit following datas to enable user authentication</li>
+      <pre>
+      adminAuth: {
+          type: "credentials",
+          users: [{
+              username: "admin",
+              password: "GENERATED HASH-PW CODE",
+              permissions: "*"
+          }]
+      },
+      </pre>
+    <li>install node-red-dashboard</li>
+    <li>install node-red-contrib-homebridge-automation</li>
+    <li>install node-red-contrib-line-messaging-api</li>
+    <li>using periodly update IP address to freeDDNS by HTTP get IP address then HTTP request update to DDNS.</li>
+      <pre>
+        [{"id":"a272b349.f03c68","type":"inject","z":"1935bfc0.28217","name":"update_ip2dynu","props":[{"p":"payload"},
+        {"p":"topic","vt":"str"}],"repeat":"","crontab":"","once":false,"onceDelay":0.1,"topic":"","payload":"","payloadType":"date","x":220,"y":1820,"wires":[["5a039c93.a82a2c"]]},
+        {"id":"5a039c93.a82a2c","type":"http request","z":"1935bfc0.28217","name":"","method":"GET","ret":"txt","paytoqs":"body","url":"https://api.dynu.com/nic/update?hostname=zywu0111.freeddns.org&password=38cb54c850626765d5133892033290c1","tls":"","persist":false,"proxy":"","authType":"","x":470,"y":1820,"wires":[["b887d64.d68d328"]]},
+        {"id":"b887d64.d68d328","type":"debug","z":"1935bfc0.28217","name":"","active":true,"tosidebar":true,"console":false,"tostatus":false,"complete":"true","targetType":"full","statusVal":"","statusType":"auto","x":680,"y":1800,"wires":[]},
+          {"id":"fca05075.903978","type":"inject","z":"1935bfc0.28217","name":"","props":[{"p":"payload"},{"p":"topic","vt":"str"}],"repeat":"","crontab":"*/5 6-22 * * *","once":true,"onceDelay":0.1,"topic":"","payload":"","payloadType":"date","x":250,"y":1920,"wires":[["450f636d.09c42c"]]},
+          {"id":"450f636d.09c42c","type":"http request","z":"1935bfc0.28217","name":"getIP","method":"GET","ret":"txt","paytoqs":"body","url":"https://myip.com.tw","tls":"","persist":false,"proxy":"","authType":"","x":460,"y":1940,"wires":[["a465e8be.dae868"]]},
+          {"id":"b9c3e19a.0f8188","type":"debug","z":"1935bfc0.28217","name":"","active":true,"tosidebar":true,"console":false,"tostatus":false,"complete":"false","statusVal":"","statusType":"auto","x":910,"y":2000,"wires":[]},
+          {"id":"a465e8be.dae868","type":"html","z":"1935bfc0.28217","name":"","property":"payload","outproperty":"payload","tag":"font","ret":"html","as":"single","x":640,"y":1940,"wires":[["7f0c22d6.c1eeec"]]},
+          {"id":"fe5267c5.5e6998","type":"rbe","z":"1935bfc0.28217","name":"","func":"rbe","gap":"","start":"","inout":"out","septopics":false,"property":"payload","x":770,"y":1880,"wires":[["5a039c93.a82a2c"]]},{"id":"7f0c22d6.c1eeec","type":"change","z":"1935bfc0.28217","name":"","rules":[{"t":"set","p":"payload","pt":"msg","to":"payload[0]","tot":"jsonata"}],"action":"","property":"","from":"","to":"","reg":false,"x":900,"y":1940,"wires":[["fe5267c5.5e6998","b9c3e19a.0f8188"]]}]
+      </pre>
+  </ul>
+</ol>
+
+<h1>Setup DDNS - Dynu.org</h1>
+<ol>
+  <li>register Dynu.com account</li>
+  <li>update ip address => https://api.dynu.com/nic/update?hostname=example.dynu.com&password=PASSWORD</li>
+  <li> Method 2 </li>
+  <ul>
+    <li>Create a directory to put the files into</li>
+    <pre>
+    mkdir dynudns 
+    cd dynudns
+    vi dynu.sh ==>
+
+    echo url="https://api.dynu.com/nic/update?username=USERNAME&password=PASSWORD" | curl -k -o ~/dynudns/dynu.log -K -
+    
+    *password can be used MD5 Hash
+    <==
+    chmod 700 dynu.sh
+    crontab -e ==>
+    
+    */5 * * * * ~/dynudns/dynu.sh >/dev/null 2>&1
+    
+    <== update ip every 5 min
+    </pre>
+  </ul>
+    <li>
+      <span>https://api.dynu.com/nic/update?hostname=&lt;your ddns hostname&gt;&password=&lt;Password MD5/SHA-256&gt;</span>
+    </li>
+</ol>
+
+<h1>Install Mosquitto MQTT broker</h1>
+<ol>
+  <li>first, update and upgrade</li>
+  <li>sudo apt-get install mosquitto mosquitto-clients</li>
+  <li>reference:https://blog.gtwang.org/iot/raspberry-pi/raspberry-pi-mosquitto-mqtt-broker-iot-integration/</li>
+</ol>
+
+<h1>Install Docker</h1>
+<ol>
+  <li>first, update and full-upgrade</li>
+  <li>install docker command<br>curl -sSL https://get.docker.com | sh</li>
+  <li>sudo systemctl enable docker</li>
+  <li>Install portainer for docker container/Image manager<br>
+      https://documentation.portainer.io/v2.0/deploy/ceinstalldocker/</li>
+  <li>reboot</li>
+  <li>https://host.local:9000</li>
+  <li>register hub.docker.com</li> 
+  <li>Install homebridge Image</li>
+  <li>Install homebridge Plugin "Homebridge Mqttthing"</li>
+</ol>
+
+================================================================================================
+
 <h1> Install Home assistor (Hassio)</h1>
 <h3> hassio homepage</h3>
     <p>- https://www.home-assistant.io</p>
@@ -131,91 +221,3 @@ method=auto<br>
         <p>windows10: need to enable "SMB 1.0/CIFS File Sharing Support "--> "SMB 1.0/CIFS client"</p>
         <p>cmd --> optionalfeatures</p>
         
-<h3> Node-RED install in Rasbin</h3>
-<ol>
-  <li> <a href="https://nodered.org/docs/getting-started/raspberrypi">installation introduction in NodeRED.org</a></li>
-  <li> setup authentication</li>
-  <ul>
-    <li>sudo npm install -g node-red-admin #generate password HASH code</li>
-    <li>node-red-admin hash-pw. #copy generated code</li>
-    <li>cd .node-red</li>
-    <li>vi settings.js</li>
-    <li>edit following datas to enable user authentication</li>
-      <pre>
-      adminAuth: {
-          type: "credentials",
-          users: [{
-              username: "admin",
-              password: "GENERATED HASH-PW CODE",
-              permissions: "*"
-          }]
-      },
-      </pre>
-    <li>install node-red-dashboard</li>
-    <li>install node-red-contrib-homebridge-automation</li>
-    <li>install node-red-contrib-line-messaging-api</li>
-    <li>using periodly update IP address to freeDDNS by HTTP get IP address then HTTP request update to DDNS.</li>
-      <pre>
-        [{"id":"a272b349.f03c68","type":"inject","z":"1935bfc0.28217","name":"update_ip2dynu","props":[{"p":"payload"},
-        {"p":"topic","vt":"str"}],"repeat":"","crontab":"","once":false,"onceDelay":0.1,"topic":"","payload":"","payloadType":"date","x":220,"y":1820,"wires":[["5a039c93.a82a2c"]]},
-        {"id":"5a039c93.a82a2c","type":"http request","z":"1935bfc0.28217","name":"","method":"GET","ret":"txt","paytoqs":"body","url":"https://api.dynu.com/nic/update?hostname=zywu0111.freeddns.org&password=38cb54c850626765d5133892033290c1","tls":"","persist":false,"proxy":"","authType":"","x":470,"y":1820,"wires":[["b887d64.d68d328"]]},
-        {"id":"b887d64.d68d328","type":"debug","z":"1935bfc0.28217","name":"","active":true,"tosidebar":true,"console":false,"tostatus":false,"complete":"true","targetType":"full","statusVal":"","statusType":"auto","x":680,"y":1800,"wires":[]},
-          {"id":"fca05075.903978","type":"inject","z":"1935bfc0.28217","name":"","props":[{"p":"payload"},{"p":"topic","vt":"str"}],"repeat":"","crontab":"*/5 6-22 * * *","once":true,"onceDelay":0.1,"topic":"","payload":"","payloadType":"date","x":250,"y":1920,"wires":[["450f636d.09c42c"]]},
-          {"id":"450f636d.09c42c","type":"http request","z":"1935bfc0.28217","name":"getIP","method":"GET","ret":"txt","paytoqs":"body","url":"https://myip.com.tw","tls":"","persist":false,"proxy":"","authType":"","x":460,"y":1940,"wires":[["a465e8be.dae868"]]},
-          {"id":"b9c3e19a.0f8188","type":"debug","z":"1935bfc0.28217","name":"","active":true,"tosidebar":true,"console":false,"tostatus":false,"complete":"false","statusVal":"","statusType":"auto","x":910,"y":2000,"wires":[]},
-          {"id":"a465e8be.dae868","type":"html","z":"1935bfc0.28217","name":"","property":"payload","outproperty":"payload","tag":"font","ret":"html","as":"single","x":640,"y":1940,"wires":[["7f0c22d6.c1eeec"]]},
-          {"id":"fe5267c5.5e6998","type":"rbe","z":"1935bfc0.28217","name":"","func":"rbe","gap":"","start":"","inout":"out","septopics":false,"property":"payload","x":770,"y":1880,"wires":[["5a039c93.a82a2c"]]},{"id":"7f0c22d6.c1eeec","type":"change","z":"1935bfc0.28217","name":"","rules":[{"t":"set","p":"payload","pt":"msg","to":"payload[0]","tot":"jsonata"}],"action":"","property":"","from":"","to":"","reg":false,"x":900,"y":1940,"wires":[["fe5267c5.5e6998","b9c3e19a.0f8188"]]}]
-      </pre>
-  </ul>
-</ol>
-
-<h3>Setup DDNS - Dynu.org</h3>
-<ol>
-  <li>register Dynu.com account</li>
-  <li>update ip address => https://api.dynu.com/nic/update?hostname=example.dynu.com&password=PASSWORD</li>
-  <li> Method 2 </li>
-  <ul>
-    <li>Create a directory to put the files into</li>
-    <pre>
-    mkdir dynudns 
-    cd dynudns
-    vi dynu.sh ==>
-
-    echo url="https://api.dynu.com/nic/update?username=USERNAME&password=PASSWORD" | curl -k -o ~/dynudns/dynu.log -K -
-    
-    *password can be used MD5 Hash
-    <==
-    chmod 700 dynu.sh
-    crontab -e ==>
-    
-    */5 * * * * ~/dynudns/dynu.sh >/dev/null 2>&1
-    
-    <== update ip every 5 min
-    </pre>
-  </ul>
-    <li>
-      <span>https://api.dynu.com/nic/update?hostname=&lt;your ddns hostname&gt;&password=&lt;Password MD5/SHA-256&gt;</span>
-    </li>
-</ol>
-
-<h3>Install Mosquitto MQTT broker</h3>
-<ol>
-  <li>first, update and upgrade</li>
-  <li>sudo apt-get install mosquitto mosquitto-clients</li>
-  <li>reference:https://blog.gtwang.org/iot/raspberry-pi/raspberry-pi-mosquitto-mqtt-broker-iot-integration/</li>
-</ol>
-
-<h3>Install Docker</h3>
-<ol>
-  <li>first, update and full-upgrade</li>
-  <li>install docker command<br>curl -sSL https://get.docker.com | sh</li>
-  <li>sudo systemctl enable docker</li>
-  <li>Install portainer for docker container/Image manager<br>
-      https://documentation.portainer.io/v2.0/deploy/ceinstalldocker/</li>
-  <li>reboot</li>
-  <li>https://host.local:9000</li>
-  <li>register hub.docker.com</li> 
-  <li>Install homebridge Image</li>
-  <li>Install homebridge Plugin "Homebridge Mqttthing"</li>
-</ol>
-    
